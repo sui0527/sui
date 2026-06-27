@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>すい — 信州の白い天使</title>
+  <title>すいのとなり — 信州の白い天使</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green-dark:  #2d5a27;
+      --green-dark:  #3F988D;
       --green-mid:   #4a7c42;
       --green-light: #c8dfc4;
       --beige:       #f5f0e8;
@@ -49,7 +49,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, #7bb8d4 0%, #c8dfc4 55%, #2d5a27 100%);
+      background: linear-gradient(to bottom, #7bb8d4 0%, #c8dfc4 55%, #3F988D 100%);
     }
 
     .hero-photo {
@@ -86,6 +86,22 @@
       letter-spacing: 0.25em;
       text-shadow: 0 2px 20px rgba(0,0,0,0.5);
       line-height: 1;
+    }
+
+    .hero-name-no {
+      font-size: 0.3em;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+
+    .hero-name-tonari {
+      font-size: 0.55em;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      vertical-align: middle;
+      opacity: 0.9;
     }
 
     .hero-sub {
@@ -537,7 +553,7 @@
   <div class="hero-overlay"></div>
   <div class="date-badge" id="dateBadge"></div>
   <div class="hero-content">
-    <h1 class="hero-name">すい</h1>
+    <h1 class="hero-name">すい<span class="hero-name-no">の</span><span class="hero-name-tonari">となり</span></h1>
     <p class="hero-sub">信州の森で育つ、白い天使</p>
     <div class="hero-scroll">SCROLL</div>
   </div>
@@ -635,12 +651,12 @@
 <footer>
   <!-- 長野の山シルエット -->
   <svg class="mountain-svg" viewBox="0 0 1440 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0,140 L0,90 L80,60 L160,85 L260,20 L360,70 L440,45 L520,80 L620,10 L700,55 L780,30 L880,65 L960,25 L1040,70 L1140,40 L1220,75 L1320,50 L1440,80 L1440,140 Z" fill="#2d5a27"/>
+    <path d="M0,140 L0,90 L80,60 L160,85 L260,20 L360,70 L440,45 L520,80 L620,10 L700,55 L780,30 L880,65 L960,25 L1040,70 L1140,40 L1220,75 L1320,50 L1440,80 L1440,140 Z" fill="#3F988D"/>
     <path d="M0,140 L0,110 L100,85 L200,105 L320,55 L420,95 L540,70 L640,100 L760,50 L860,90 L980,60 L1100,95 L1200,65 L1340,100 L1440,80 L1440,140 Z" fill="#3d7035" opacity="0.7"/>
     <path d="M0,140 L0,125 L120,105 L240,120 L380,85 L500,115 L640,90 L760,120 L900,80 L1020,115 L1160,90 L1300,120 L1440,100 L1440,140 Z" fill="#4a7c42" opacity="0.5"/>
   </svg>
   <div class="footer-content">
-    <p class="footer-name">すい</p>
+    <p class="footer-name">すいのとなり</p>
     <p class="footer-sub">Sui — Nagano, Japan</p>
     <p class="footer-note" id="footerDate"></p>
   </div>
@@ -648,15 +664,16 @@
 
 <script>
   const photos = [
-    './photo/IMG_5416.jpeg',
     './photo/IMG_5468.jpeg',
-    './photo/IMG_6589.jpeg',
-    './photo/IMG_6795.jpeg',
-    './photo/IMG_6891.jpeg',
     './photo/IMG_7426.jpeg',
-    './photo/IMG_7461.jpeg',
-    './photo/IMG_7517.jpeg',
-    './photo/IMG_7552.jpeg',
+    './photo/IMG_7567.jpeg',
+    './photo/IMG_7568.jpeg',
+    './photo/IMG_7570.jpeg',
+    './photo/IMG_7571.jpeg',
+    './photo/IMG_7572.jpeg',
+    './photo/IMG_7573.jpeg',
+    './photo/IMG_7574.jpeg',
+    './photo/IMG_7576.jpeg',
   ];
 
   // 日付ベースで今日の写真インデックスを決定（UTC日数 % 枚数）
