@@ -406,6 +406,45 @@
 
     .lightbox-close:hover { opacity: 1; }
 
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 480px) {
+      /* ヒーロー */
+      .hero { min-height: 100svh; }
+      .hero-content { padding: 0 1rem 2.5rem; }
+      .hero-sub { letter-spacing: 0.15em; }
+      .hero-scroll { margin-top: 1.2rem; }
+      .date-badge { font-size: 0.65rem; padding: 0.4rem 0.8rem; top: 1rem; right: 1rem; }
+
+      /* 年齢バナー */
+      .age-banner { padding: 2rem 1rem; }
+      .age-label { font-size: 0.7rem; letter-spacing: 0.2em; }
+      .age-note { font-size: 0.75rem; }
+
+      /* セクション共通 */
+      section { padding: 3rem 1rem; }
+      .section-title { margin-bottom: 1.25rem; }
+      .divider { margin-bottom: 1.75rem; }
+
+      /* プロフィール */
+      .profile-grid { grid-template-columns: 1fr; gap: 0.85rem; margin-bottom: 1.75rem; }
+      .profile-card[style*="grid-column"] { grid-column: span 1 !important; }
+      .profile-card { padding: 1rem 1.1rem; }
+      .profile-card-value { font-size: 1rem; }
+      .profile-text { font-size: 0.95rem; line-height: 1.9; }
+      .likes-list li { font-size: 0.85rem; padding: 0.4rem 1rem; }
+
+      /* ギャラリー */
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+
+      /* スライダー */
+      .slider-btn { width: 36px; height: 36px; font-size: 1rem; }
+      .slider-btn.prev { left: 4px; }
+      .slider-btn.next { right: 4px; }
+
+      /* フッター */
+      .footer-name { font-size: 1.5rem; }
+    }
+
     /* ─── MONTHLY SLIDER ─── */
     .monthly-section {
       background: var(--white);
@@ -679,8 +718,8 @@
   // 日付ベースで今日の写真インデックスを決定（UTC日数 % 枚数）
   const todayIndex = Math.floor(Date.now() / 86400000) % photos.length;
 
-  // ヒーロー写真
-  document.getElementById('heroPhoto').src = photos[todayIndex];
+  // ヒーロー写真（固定）
+  document.getElementById('heroPhoto').src = './ヘッダー/suisui.jpeg';
 
   // 日付バッジ
   const now = new Date();
@@ -751,6 +790,14 @@
   counter.textContent = `1 / ${monthlyPhotos.length}`;
   document.getElementById('sliderPrev').addEventListener('click', () => goTo(current - 1));
   document.getElementById('sliderNext').addEventListener('click', () => goTo(current + 1));
+
+  // タッチスワイプ対応
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  }, { passive: true });
 
   // キーボード操作（スライダーフォーカス時）
   document.addEventListener('keydown', e => {
